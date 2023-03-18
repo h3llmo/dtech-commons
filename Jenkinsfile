@@ -15,14 +15,6 @@ pipeline {
   
  
   stages {
-
-    stage ('checkout') {
-      steps {
-        checkout changelog: false, scm: scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/h3llmo/dtech-commons']])
-        sh "cp ${env.MAVEN_SETTINGS} ${WORKSPACE}/settings.xml"
-      }
-    }
-
     stage ('deploy lib') {
       agent {
         docker reuseNode: true, image: "${env.MAVEN_IMAGE}", args: "--add-host ${NEXUS_HOST}:${NEXUS_IP}"
