@@ -10,7 +10,7 @@ pipeline {
       NEXUS_IP="10.0.2.3"
       REPO_URL="https://github.com/h3llmo/dtech-commons"
       MAVEN_IMAGE="maven:3.8.3-openjdk-17"
-      MAVEN_SETTINGS="/home/jenkins_home/.m2/settings.xml"
+      MAVEN_SETTINGS="/var/jenkins_home/settings.xml"
   }
   
  
