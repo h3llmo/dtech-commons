@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.damosoft</groupId>
     <artifactId>dtech-common-utils</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
@@ -18,12 +18,12 @@
         <repository>
             <id>nexus</id>
             <name>Releases</name>
-            <url>http://damosoft.internal.com:9003/repository/maven-releases</url>
+            <url>http://damosoft.internal.com:9003/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus</id>
             <name>Snapshot</name>
-            <url>http://damosoft.internal.com:9003/repository/maven-snapshots</url>
+            <url>http://damosoft.internal.com:9003/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
