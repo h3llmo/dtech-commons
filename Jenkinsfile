@@ -1,28 +1,19 @@
 pipeline {
   agent any
-
-  options {
-    disableConcurrentBuilds()
-  }
-  
-  environment {
-      NEXUS_HOST="damosoft.internal.com"
-      NEXUS_IP="10.0.2.3"
-      REPO_URL="https://github.com/h3llmo/dtech-commons"
-      MAVEN_IMAGE="maven:3.8.3-openjdk-17"
-      MAVEN_SETTINGS="/var/jenkins_home/settings.xml"
-  }
-  
- 
   stages {
-    stage ('deploy lib') {
+    stage('build') {
       agent {
-        docker reuseNode: true, image: "${env.MAVEN_IMAGE}", args: "--add-host ${NEXUS_HOST}:${NEXUS_IP}"
+        docker {
+          image 'maven:3.8.3-openjdk-17'
+          args '''-v /media/dtech/maven-settings:/opt/maven -w /opt/maven
+--add-host damosoft.internal.com:10.0.2.3'''
+        }
+
       }
       steps {
-        sh "mvn -f dtech-common-utils/pom.xml clean package deploy --settings ${WORKSPACE}/settings.xml"
-        junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
+        sh 'mvn clean package deploy -s /opt/maven/settings.xml'
       }
-    }   
+    }
+
   }
 }
