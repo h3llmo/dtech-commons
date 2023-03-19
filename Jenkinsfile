@@ -11,7 +11,7 @@ pipeline {
 
       }
       steps {
-        sh 'mvn clean package deploy -s /opt/maven/settings.xml'
+        sh 'mvn -f dtech-common-utils/pom.xml clean package deploy -s /opt/maven/settings.xml'
       }
     }
 
